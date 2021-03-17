@@ -25,12 +25,12 @@ class VigenereCipheringMachine{
           result += message[i];
           count--;
           }
-        else if(num_mes+num_key > alphabet.length) result += alphabet[num_mes+num_key-alphabet.length];
+        else if(num_mes+num_key > alphabet.length-1) result += alphabet[num_mes+num_key-alphabet.length];
         else result+=alphabet[num_mes+num_key];
         count++;
       }
       if (this.type != false) return result
-      else  result.reverse();
+      else  return result.split("").reverse().join("");
     }
   }    
   decrypt(message, key) {
@@ -45,12 +45,12 @@ class VigenereCipheringMachine{
        key += key[j];
       }
       for(let i=0; i < message.length; i++){
-        var num_mes = -1;
+        var num_mes = 'symbol';
         for(let j=0; j < alphabet.length; j++){
           if(message[i] == alphabet[j])num_mes=j;
           if(key[count]==alphabet[j])var num_key=j; 
         }
-        if(num_mes==-1){
+        if(num_mes=='symbol'){
           result += message[i];
           count--;
           }
@@ -59,7 +59,7 @@ class VigenereCipheringMachine{
         count++;
       }
       if (this.type != false) return result
-      else  result.reverse();
+      else  return result.split("").reverse().join("");
     }
   }
 }
